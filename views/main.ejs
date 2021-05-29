@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Excel to HTML</title>
+        <style>
+            * {
+                font-family: 'Segoe UI', sans-serif;
+                margin: 0;
+                border: 0;
+                padding: 0;
+            }
+            
+            table, td, th {
+                border: solid 1px black;
+                padding: 3px;
+            }
+
+            table {
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <% header.forEach(element => { %>
+                    <th><%= element %></th>
+                <% }); %>
+            </thead>
+
+            <tbody>
+                <% body.forEach(row => { %>
+                    <tr>
+                        <% row.forEach(element => { %>
+                            <td><%= element %></td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </body>
+</html>
