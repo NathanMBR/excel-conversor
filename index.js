@@ -1,3 +1,6 @@
+// Modules
+const fs = require("fs");
+
 // Components
 const read = require("./components/reader");
 const process = require("./components/processor");
@@ -11,6 +14,19 @@ const path = "./examples/movies.csv";
 
 // Code
 (async () => {
+    try {
+        if (!fs.existsSync("./out"))
+            fs.mkdirSync("./out");
+
+        if (!fs.existsSync("./out/html"))
+            fs.mkdirSync("./out/html");
+
+        if(!fs.existsSync("./out/pdf"));
+            fs.mkdirSync("./out/pdf");
+    } catch (error) {
+        throw new Error(error);
+    }
+
     const movies = new Table(process(await read(path)));
 
     console.log(movies.header);
